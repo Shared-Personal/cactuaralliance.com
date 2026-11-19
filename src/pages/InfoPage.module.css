@@ -1,25 +1,17 @@
 /* Shared layout for the text pages carried over from the original site
-   (About, Contact): photo banner + centered white-on-black copy. */
+   (About, Contact): full group photo + centered white-on-black copy. */
 
-.banner {
-  position: relative;
-  height: clamp(220px, 34vh, 360px);
-  overflow: hidden;
+/* The whole group photo, uncropped at its natural 16:9 */
+.photo {
+  margin: 0 auto;
+  max-width: 1920px;
   background: #000000;
 }
 
-.bannerImg {
+.photoImg {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 35%;
-}
-
-.banner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.55) 100%);
+  height: auto;
 }
 
 .head {
@@ -29,7 +21,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--sp-4);
-  margin-top: calc(-1 * var(--sp-8));
+  margin-top: var(--sp-6);
   text-align: center;
 }
 

@@ -37,9 +37,15 @@ function PersonCard({ person }: { person: Member }) {
 export default function ContactPage() {
   return (
     <>
-      <div className={styles.banner}>
-        <img className={styles.bannerImg} src={gatheringSrc} alt="" />
-      </div>
+      <figure className={styles.photo}>
+        <img
+          className={styles.photoImg}
+          src={gatheringSrc}
+          width={1920}
+          height={1080}
+          alt="Dozens of Cactuar Alliance members from many Free Companies gathered on a staircase for a group photo"
+        />
+      </figure>
 
       <div className="ca-container">
         <header className={styles.head}>

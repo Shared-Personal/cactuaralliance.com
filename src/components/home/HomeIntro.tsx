@@ -7,34 +7,49 @@ import styles from './HomeIntro.module.css';
 export function HomeIntro() {
   return (
     <section className={styles.hero}>
+      {/* Banner: mascot | original group photo (uncropped) | mascot.
+          The side gutters are filled with a blurred, darkened copy of the photo. */}
       <div className={styles.banner}>
-        <img
-          className={styles.bannerImg}
-          src={gatheringSrc}
-          alt="Dozens of Cactuar Alliance members from many Free Companies gathered on a staircase for a group photo"
+        <div
+          className={styles.bannerFill}
+          style={{ backgroundImage: `url(${gatheringSrc})` }}
+          aria-hidden="true"
         />
-        <div className={styles.bannerShade} aria-hidden="true" />
 
-        <div className={`${styles.bannerInner} ca-container`}>
-          <div className={styles.copy}>
-            <p className={styles.eyebrow}>Final Fantasy XIV · Cactuar Server · Since 2016</p>
-            <h1 className={styles.title}>
-              <span className={styles.titleSmall}>.: The :.</span>
-              Cactuar Alliance
-            </h1>
-            <p className={styles.quote}>
-              Regardless of the <span className="ca-tag">&lt;tag&gt;</span> above your head,
-              everyone is still in the same world.
-            </p>
+        <div className={`${styles.side} ${styles.sideLeft}`} aria-hidden="true">
+          <div className={styles.sideMascot}>
+            <Mascot size="100%" ariaLabel="" />
           </div>
+        </div>
 
-          <div className={styles.mascotWrap}>
+        <figure className={styles.photo}>
+          <img
+            className={styles.photoImg}
+            src={gatheringSrc}
+            width={1920}
+            height={1080}
+            alt="Dozens of Cactuar Alliance members from many Free Companies gathered on a staircase for a group photo"
+          />
+        </figure>
+
+        <div className={`${styles.side} ${styles.sideRight}`} aria-hidden="true">
+          <div className={styles.sideMascot}>
             <Mascot size="100%" ariaLabel="" />
           </div>
         </div>
       </div>
 
       <div className={`${styles.intro} ca-container`}>
+        <p className={styles.eyebrow}>Final Fantasy XIV · Cactuar Server · Since 2016</p>
+        <h1 className={styles.title}>
+          <span className={styles.titleSmall}>.: The :.</span>
+          Cactuar Alliance
+        </h1>
+        <p className={styles.quote}>
+          Regardless of the <span className="ca-tag">&lt;tag&gt;</span> above your head, everyone
+          is still in the same world.
+        </p>
+
         <a href={MIMIC_BOX_URL} target="_blank" rel="noreferrer" className={styles.boxButton}>
           Mimic Box 2.0
         </a>

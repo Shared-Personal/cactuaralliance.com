@@ -42,3 +42,6 @@ coverage/
 
 # Playwright MCP screenshots/snapshots
 .playwright-mcp/
+
+# Claude Code project config, skills, and plugin settings (kept local)
+.claude/

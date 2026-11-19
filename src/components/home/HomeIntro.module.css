@@ -3,109 +3,105 @@
 }
 
 /* ============================================================
-   Full-bleed community photo banner (the original site's header)
+   Banner: mascot | original photo (never cropped or upscaled) | mascot
    ============================================================ */
 
 .banner {
-  position: relative;
-  min-height: clamp(420px, 62vh, 640px);
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  background: #000000;
-}
+  /* Photo width: at most 1280px (well under the 1920px original),
+     short enough to fit the viewport, and leaving room for the mascots. */
+  --side-min: clamp(140px, 16vw, 320px);
+  --photo-w: min(1280px, calc(70vh * 16 / 9), calc(100vw - 2 * var(--side-min)));
 
-.bannerImg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 40%;
-}
-
-.bannerShade {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.1) 75%),
-    linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 45%);
-}
-
-.bannerInner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  align-items: end;
-  gap: var(--sp-6);
-  padding-block: var(--sp-8) var(--sp-6);
+  grid-template-columns: minmax(0, 1fr) var(--photo-w) minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  background: #000000;
+  padding-block: var(--sp-5);
 }
 
-.copy {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
-  padding-bottom: var(--sp-5);
+/* Side fill: the same photo, blurred and darkened, so the gutters aren't flat black */
+.bannerFill {
+  position: absolute;
+  inset: -40px;
+  background-size: cover;
+  background-position: center 40%;
+  filter: blur(28px) brightness(0.32) saturate(1.15);
+  transform: scale(1.1);
 }
 
-.eyebrow {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--c-ca-green);
+.bannerFill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 30%);
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  font-size: clamp(2.6rem, 7vw, 5.4rem);
-  font-weight: var(--fw-bold);
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
-}
-
-.titleSmall {
-  font-size: 0.32em;
-  font-weight: var(--fw-regular);
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--text-body);
-  margin-bottom: 0.4em;
-}
-
-.quote {
-  max-width: 40ch;
-  font-style: italic;
-  font-size: clamp(var(--fs-16), 1.6vw, var(--fs-20));
-  color: #ffffff;
-  line-height: var(--lh-relaxed);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
-}
-
-.mascotWrap {
-  justify-self: end;
-  width: min(300px, 100%);
-  margin-bottom: calc(-1 * var(--sp-8));
+.photo {
   position: relative;
   z-index: 1;
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 24px 60px -20px rgba(0, 0, 0, 0.9);
+}
+
+.photoImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.side {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: var(--sp-3);
+}
+
+.sideMascot {
+  width: min(100%, 260px);
+}
+
+.sideLeft {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sideRight {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Mirror the right mascot so both face the photo */
+.sideRight .sideMascot {
+  transform: scaleX(-1);
+}
+
+/* Offset the two hops so they don't bounce in lockstep */
+.sideRight :global(img) {
+  animation-delay: calc(var(--dur-mascot) / -2);
 }
 
 @media (max-width: 760px) {
-  .bannerInner {
+  .banner {
+    --photo-w: 100%;
     grid-template-columns: 1fr;
-    gap: 0;
-    padding-top: var(--sp-9);
+    padding-block: 0;
   }
 
-  .mascotWrap {
-    position: absolute;
-    right: var(--content-pad);
-    top: var(--sp-5);
-    width: 128px;
-    margin: 0;
+  .photo {
+    grid-column: 1;
+    box-shadow: none;
+  }
+
+  .side {
+    display: none;
   }
 }
 
@@ -119,7 +115,44 @@
   align-items: center;
   gap: var(--sp-5);
   text-align: center;
-  padding-block: var(--sp-7) var(--sp-6);
+  padding-block: var(--sp-6) var(--sp-6);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c-ca-green);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(-1 * var(--sp-3));
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  font-weight: var(--fw-bold);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.titleSmall {
+  font-size: 0.32em;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-body);
+  margin-bottom: 0.4em;
+}
+
+.quote {
+  max-width: 44ch;
+  font-style: italic;
+  font-size: clamp(var(--fs-16), 1.6vw, var(--fs-20));
+  color: #ffffff;
+  line-height: var(--lh-relaxed);
 }
 
 .boxButton {

@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Mascot } from '../mascot/Mascot';
+import { MIMIC_BOX_URL } from '../../data/links';
 import styles from './Nav.module.css';
 
 const LINKS: ReadonlyArray<{ to: string; label: string }> = [
-  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About the <CA>' },
   { to: '/find-your-fc', label: 'Find your FC' },
   { to: '/fcs', label: 'FC Directory' },
   { to: '/resources', label: 'Resources' },
+  { to: '/contact', label: 'Contact' },
 ];
-
-const DISCORD_URL = 'https://discord.gg/cactuar-alliance';
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const close = () => setMenuOpen(false);
 
   return (
     <header className={styles.header}>
       <div className={`${styles.inner} ca-container`}>
-        <NavLink to="/" className={styles.brand} onClick={() => setMenuOpen(false)}>
-          <Mascot pose="wave" size={44} animated={false} ariaLabel="" />
+        <NavLink to="/" className={styles.brand} onClick={close} aria-label="Cactuar Alliance home">
+          <Mascot size={44} animated={false} ariaLabel="" />
           <span className={styles.brandText}>
-            <span className={styles.brandPrimary}>Cactuar</span>
-            <span className={styles.brandSecondary}>Alliance</span>
+            <span className={styles.brandPrimary}>.:Cactuar Alliance:.</span>
+            <span className={styles.brandSecondary}>
+              <span className="ca-tag">&lt;CA&gt;</span> FFXIV · Cactuar
+            </span>
           </span>
         </NavLink>
 
@@ -49,8 +52,7 @@ export function Nav() {
               <li key={link.to}>
                 <NavLink
                   to={link.to}
-                  end={link.to === '/'}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={close}
                   className={({ isActive }) =>
                     `${styles.link} ${isActive ? styles.linkActive : ''}`
                   }
@@ -61,29 +63,13 @@ export function Nav() {
             ))}
             <li>
               <a
-                href={DISCORD_URL}
+                href={MIMIC_BOX_URL}
                 target="_blank"
                 rel="noreferrer"
-                className={styles.discord}
-                onClick={() => setMenuOpen(false)}
+                className={styles.cta}
+                onClick={close}
               >
-                Discord
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                  className={styles.discordIcon}
-                >
-                  <path
-                    d="M6 3h7v7M13 3 4 12"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                Mimic Box
               </a>
             </li>
           </ul>

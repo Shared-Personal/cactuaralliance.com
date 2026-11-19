@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { PageHero } from '../components/layout/PageHero';
 import { Mascot } from '../components/mascot/Mascot';
 import { RESOURCE_SECTIONS, type ResourceLink } from '../data/resources';
+import { MIMIC_BOX_URL } from '../data/links';
 import styles from './ResourcesPage.module.css';
 
 export default function ResourcesPage() {
@@ -10,7 +11,7 @@ export default function ResourcesPage() {
       <PageHero
         eyebrow="Guides · Tools · Mentorship"
         title="Resources"
-        lede="Hand-picked starting points for sprouts, returning players, and veterans. Plus pointers for mentorship inside the alliance Discord."
+        lede="Hand-picked starting points for sprouts, returners, and veterans — plus the Alliance's own FC Index, Linkshell, and Mimic Box."
         mascotPose="sign"
         mascotSignText="Read these!"
       />
@@ -52,24 +53,25 @@ export default function ResourcesPage() {
             <Mascot pose="wave" size={140} />
           </div>
           <div className={styles.calloutCopy}>
-            <p className={styles.calloutKicker}>Mentorship</p>
-            <h2 className={styles.calloutTitle}>Stuck on something? Ask in Discord.</h2>
+            <p className={styles.calloutKicker}>Sabrotenders</p>
+            <h2 className={styles.calloutTitle}>Stuck on something? Ask a Sabrotender.</h2>
             <p className={styles.calloutBody}>
-              The alliance runs mentorship informally — every member FC has folks who love showing
-              newer players around. Drop a message in <code>#mentorship</code> and someone will
-              match you with a mentor (raid, craft, jobs, housing, glam — whatever you need).
+              Sabrotenders are volunteers who keep the Alliance running. They hang out in the
+              Linkshell and the Discord and will help with whatever comes up — Dungeons, Raids,
+              Company Workshops, Diadem, Palace of the Dead, and more. Reach them in-game or drop a
+              note in the Mimic Box.
             </p>
             <div className={styles.calloutActions}>
               <a
-                href="https://discord.gg/cactuar-alliance"
+                href={MIMIC_BOX_URL}
                 target="_blank"
                 rel="noreferrer"
                 className={styles.calloutPrimary}
               >
-                Join the Discord ↗
+                Open the Mimic Box ↗
               </a>
-              <Link to="/fcs" className={styles.calloutGhost}>
-                Browse FCs first
+              <Link to="/contact" className={styles.calloutGhost}>
+                Meet the Sabrotenders
               </Link>
             </div>
           </div>

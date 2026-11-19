@@ -1,0 +1,232 @@
+/* Shared layout for the text pages carried over from the original site
+   (About, Contact): photo banner + centered white-on-black copy. */
+
+.banner {
+  position: relative;
+  height: clamp(220px, 34vh, 360px);
+  overflow: hidden;
+  background: #000000;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-top: calc(-1 * var(--sp-8));
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c-ca-green);
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: var(--fw-bold);
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.boxButton {
+  display: inline-block;
+  padding: 0.95em 2.2em 0.85em;
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.boxButton:hover,
+.boxButton:focus-visible {
+  background: var(--c-ca-green);
+  color: #000000;
+}
+
+.prose {
+  max-width: 78ch;
+  margin-inline: auto;
+  padding-block: var(--sp-6) var(--sp-8);
+  text-align: center;
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+.prose p + p {
+  margin-top: var(--sp-4);
+}
+
+.prose strong {
+  color: inherit;
+}
+
+.lede {
+  color: var(--c-ca-green);
+  font-size: var(--fs-18);
+}
+
+.divider {
+  display: block;
+  width: 64px;
+  height: 1px;
+  margin: var(--sp-7) auto;
+  border: 0;
+  background: #3a3a3a;
+}
+
+.section + .section {
+  margin-top: var(--sp-7);
+}
+
+.section h2 {
+  font-size: clamp(var(--fs-20), 2.4vw, var(--fs-30));
+  font-weight: var(--fw-bold);
+  color: #ffffff;
+  margin-bottom: var(--sp-3);
+}
+
+.section p {
+  color: var(--text-body);
+}
+
+.example {
+  display: inline-block;
+  margin-top: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px dashed #3a3a3a;
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  color: #ffffff;
+}
+
+.inlineLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
+}
+
+.ghostButton {
+  display: inline-block;
+  padding: 0.85em 1.6em 0.75em;
+  border: 1px solid #3a3a3a;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.ghostButton:hover,
+.ghostButton:focus-visible {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}
+
+/* ============================================================
+   Contact roster
+   ============================================================ */
+
+.roster {
+  display: grid;
+  gap: var(--sp-6);
+  margin-top: var(--sp-2);
+}
+
+.roleLabel {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.person {
+  min-width: min(260px, 100%);
+  padding: var(--sp-4) var(--sp-5);
+  border: 1px solid #222222;
+  background: #0a0a0a;
+}
+
+.personName {
+  font-family: var(--font-display);
+  font-size: var(--fs-20);
+  font-weight: var(--fw-semibold);
+  color: #ffffff;
+}
+
+.personRole {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-14);
+  color: var(--text-muted);
+}
+
+.updated {
+  margin-top: var(--sp-5);
+  font-size: var(--fs-14);
+  color: var(--text-muted);
+}
+
+.closing {
+  font-style: italic;
+  color: var(--text-body);
+}
+
+/* Clickable Sabrotender (the original "Click the Sabrotender!" CTA) */
+.mascotLink {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+  text-decoration: none;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.mascotLink:hover,
+.mascotLink:focus-visible {
+  color: var(--c-ca-green);
+}

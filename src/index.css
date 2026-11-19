@@ -1,75 +1,87 @@
 /* ============================================================
    Cactuar Alliance — Design Tokens
-   Aesthetic: "Cactuar-mascot playful"
-   Palette: desert sage / sun-warmed sand / cactus deep green / pricklypear pink
+   Aesthetic: matches the original cactuaralliance.weebly.com —
+   pitch-black page, crisp white type, cactus-green <CA> accent,
+   wide-tracked uppercase navigation.
+
+   The scale names (sage/sand/pink/sky/ink) are kept so every
+   CSS Module keeps working; they are remapped for a dark theme:
+   low numbers = dark surfaces, high numbers = light text.
    ============================================================ */
 
 :root {
   /* -------- Palette -------- */
-  --c-sage-50: #f1f6f1;
-  --c-sage-100: #dae9dd;
-  --c-sage-200: #b9d4c0;
-  --c-sage-300: #8fb996; /* primary */
-  --c-sage-400: #6fa079;
-  --c-sage-500: #527d5e;
-  --c-sage-600: #3d6b5c; /* deep cactus */
-  --c-sage-700: #2e5247;
-  --c-sage-800: #213b34;
-  --c-sage-900: #142420;
+  /* Cactus greens (dark tints -> bright accent -> pale text) */
+  --c-sage-50: #0b100a;
+  --c-sage-100: #121a10;
+  --c-sage-200: #1d2a18;
+  --c-sage-300: #3d6a2a;
+  --c-sage-400: #5f9c3e;
+  --c-sage-500: #78c04c;
+  --c-sage-600: #91e05c; /* the original site's <CA> green */
+  --c-sage-700: #d8f1c6;
+  --c-sage-800: #f2fbec;
+  --c-sage-900: #ffffff;
 
-  --c-sand-50: #fdf9ef;
-  --c-sand-100: #faf1d9;
-  --c-sand-200: #f4e4c1; /* surface */
-  --c-sand-300: #ebd29a;
-  --c-sand-400: #dcb869;
-  --c-sand-500: #c79b3f;
+  /* Neutral blacks (surfaces) */
+  --c-sand-50: #000000;
+  --c-sand-100: #0a0a0a;
+  --c-sand-200: #141414;
+  --c-sand-300: #222222;
+  --c-sand-400: #5d5d5d;
+  --c-sand-500: #767676;
 
-  --c-pink-300: #f0a5b8;
-  --c-pink-400: #e88aa3;
-  --c-pink-500: #d9748f; /* primary action */
-  --c-pink-600: #b85770;
-  --c-pink-700: #8e4055;
+  /* Action / highlight greens (formerly pink) */
+  --c-pink-300: #5f9c3e;
+  --c-pink-400: #91e05c;
+  --c-pink-500: #91e05c; /* primary action */
+  --c-pink-600: #a9ea80;
+  --c-pink-700: #c4f2a6;
 
-  --c-sky-200: #cfe6ee;
-  --c-sky-300: #a8d5e2; /* link */
-  --c-sky-500: #5fa9bd;
-  --c-sky-700: #2f6d80;
+  /* Links (green, like the original) */
+  --c-sky-200: #1d2a18;
+  --c-sky-300: #91e05c;
+  --c-sky-500: #91e05c;
+  --c-sky-700: #91e05c;
 
-  --c-ink-900: #2a3530; /* body text */
-  --c-ink-700: #455048;
-  --c-ink-500: #6e7a72;
-  --c-ink-300: #a4ada5;
+  /* Type (light on black) */
+  --c-ink-900: #ffffff;
+  --c-ink-700: #d4d4d4;
+  --c-ink-500: #9a9a9a;
+  --c-ink-300: #5d5d5d;
+
+  --c-ca-green: #91e05c;
 
   /* -------- Semantic aliases -------- */
   --surface: var(--c-sand-100);
-  --surface-raised: #ffffff;
+  --surface-raised: #0e0e0e;
   --surface-sunk: var(--c-sand-200);
-  --surface-frame: var(--c-sage-700);
+  --surface-frame: var(--c-sand-300);
 
-  --bg-page: var(--c-sand-50);
+  --bg-page: #000000;
 
-  --text-strong: var(--c-ink-900);
+  --text-strong: #ffffff;
   --text-body: var(--c-ink-700);
   --text-muted: var(--c-ink-500);
-  --text-on-dark: var(--c-sand-100);
-  --text-on-action: #ffffff;
+  --text-on-dark: #ffffff;
+  --text-on-action: #000000;
 
   --action: var(--c-pink-500);
   --action-hover: var(--c-pink-600);
   --action-active: var(--c-pink-700);
 
-  --accent: var(--c-sage-600);
+  --accent: var(--c-ca-green);
   --accent-soft: var(--c-sage-200);
 
-  --link: var(--c-sky-700);
-  --link-hover: var(--c-pink-600);
+  --link: var(--c-ca-green);
+  --link-hover: #ffffff;
 
-  --border-soft: var(--c-sage-100);
-  --border-strong: var(--c-sage-300);
+  --border-soft: #1f1f1f;
+  --border-strong: #3a3a3a;
 
   /* -------- Type scale -------- */
-  --font-display: 'Fredoka', 'Comic Sans MS', system-ui, sans-serif;
-  --font-body: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
 
   --fs-12: 0.75rem;
   --fs-14: 0.875rem;
@@ -107,18 +119,18 @@
   --sp-10: 8rem;    /* 128 */
 
   /* -------- Radii -------- */
-  --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 18px;
-  --r-xl: 28px;
-  --r-pill: 999px;
+  --r-sm: 2px;
+  --r-md: 4px;
+  --r-lg: 6px;
+  --r-xl: 8px;
+  --r-pill: 4px;
   --r-blob: 42% 58% 64% 36% / 48% 38% 62% 52%;
 
   /* -------- Shadows (soft, layered) -------- */
-  --shadow-sm: 0 1px 2px rgba(42, 53, 48, 0.08);
-  --shadow-md: 0 6px 14px -4px rgba(42, 53, 48, 0.14), 0 2px 4px rgba(42, 53, 48, 0.08);
-  --shadow-lg: 0 18px 40px -16px rgba(42, 53, 48, 0.22), 0 4px 10px rgba(42, 53, 48, 0.06);
-  --shadow-pop: 0 12px 0 -6px var(--c-sage-200), 0 18px 30px -10px rgba(42, 53, 48, 0.22);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 6px 14px -4px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-lg: 0 18px 40px -16px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-pop: 0 0 0 1px rgba(145, 224, 92, 0.35), 0 12px 30px -10px rgba(145, 224, 92, 0.25);
 
   /* -------- Motion -------- */
   --dur-fast: 120ms;
@@ -132,9 +144,9 @@
   /* -------- Layout -------- */
   --content-max: 1180px;
   --content-pad: clamp(1rem, 3vw, 2.5rem);
-  --nav-h: 72px;
+  --nav-h: 96px;
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 /* ============================================================
@@ -163,11 +175,6 @@ body {
   line-height: var(--lh-normal);
   color: var(--text-body);
   background: var(--bg-page);
-  background-image:
-    radial-gradient(circle at 12% 18%, var(--c-sage-100) 0, transparent 35%),
-    radial-gradient(circle at 88% 8%, var(--c-sand-200) 0, transparent 30%),
-    radial-gradient(circle at 50% 100%, var(--c-sand-100) 0, transparent 40%);
-  background-attachment: fixed;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -203,7 +210,7 @@ a:focus-visible {
 }
 
 :focus-visible {
-  outline: 3px solid var(--c-pink-400);
+  outline: 2px solid var(--c-ca-green);
   outline-offset: 3px;
   border-radius: var(--r-sm);
 }
@@ -219,7 +226,7 @@ h6 {
   color: var(--text-strong);
   line-height: var(--lh-snug);
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 h1 {
@@ -254,6 +261,11 @@ ul {
   padding-inline: var(--content-pad);
   margin-inline: auto;
   width: 100%;
+}
+
+.ca-tag {
+  color: var(--c-ca-green);
+  white-space: nowrap;
 }
 
 .ca-sr-only {

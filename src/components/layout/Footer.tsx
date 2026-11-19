@@ -1,27 +1,42 @@
 import { Link } from 'react-router-dom';
+import { Mascot } from '../mascot/Mascot';
+import {
+  FC_INDEX_URL,
+  FC_STANDINGS_URL,
+  LINKSHELL_URL,
+  MIMIC_BOX_URL,
+  MOONLIGHTERS_GUILD_URL,
+} from '../../data/links';
 import styles from './Footer.module.css';
 
 const YEAR = new Date().getFullYear();
-const DISCORD_URL = 'https://discord.gg/cactuar-alliance';
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`${styles.inner} ca-container`}>
         <div className={styles.colBrand}>
+          <Mascot size={72} animated={false} ariaLabel="" />
           <p className={styles.tagline}>
-            Big FCs. Small FCs. <span className={styles.taglineAccent}>One server.</span>
+            Regardless of the <span className="ca-tag">&lt;tag&gt;</span> above your head,
+            everyone is still in the same world.
           </p>
           <p className={styles.note}>
-            An unofficial player-run coalition on the FFXIV Cactuar server.
+            A player-run collective of Cactuar Server Free Companies, since May 2016.
             <br />
-            Final Fantasy XIV © SQUARE ENIX CO., LTD.
+            FINAL FANTASY XIV © SQUARE ENIX CO., LTD.
           </p>
         </div>
 
         <div className={styles.colLinks}>
-          <h2 className={styles.colHeading}>The Alliance</h2>
+          <h2 className={styles.colHeading}>About the &lt;CA&gt;</h2>
           <ul>
+            <li>
+              <Link to="/about">What is the Cactuar Alliance?</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact Information</Link>
+            </li>
             <li>
               <Link to="/find-your-fc">Find your FC</Link>
             </li>
@@ -35,29 +50,31 @@ export function Footer() {
         </div>
 
         <div className={styles.colLinks}>
-          <h2 className={styles.colHeading}>Connect</h2>
+          <h2 className={styles.colHeading}>Cactuar FC Links</h2>
           <ul>
             <li>
-              <a href={DISCORD_URL} target="_blank" rel="noreferrer">
-                Discord ↗
+              <a href={MIMIC_BOX_URL} target="_blank" rel="noreferrer">
+                Mimic Box 2.0 ↗
               </a>
             </li>
             <li>
-              <a
-                href="https://na.finalfantasyxiv.com/lodestone/worldstatus/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Server Status ↗
+              <a href={FC_INDEX_URL} target="_blank" rel="noreferrer">
+                ★ Cactuar FC Index ↗
               </a>
             </li>
             <li>
-              <a
-                href="https://na.finalfantasyxiv.com/lodestone/freecompany/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Lodestone ↗
+              <a href={LINKSHELL_URL} target="_blank" rel="noreferrer">
+                Linkshell Members ↗
+              </a>
+            </li>
+            <li>
+              <a href={FC_STANDINGS_URL} target="_blank" rel="noreferrer">
+                FC Standings ↗
+              </a>
+            </li>
+            <li>
+              <a href={MOONLIGHTERS_GUILD_URL} target="_blank" rel="noreferrer">
+                .:C:. The Moonlighters Guild ↗
               </a>
             </li>
           </ul>
@@ -65,7 +82,7 @@ export function Footer() {
       </div>
 
       <div className={`${styles.bottom} ca-container`}>
-        <p>© {YEAR} Cactuar Alliance — community-built, community-loved.</p>
+        <p>© {YEAR} .:Cactuar Alliance:.</p>
       </div>
     </footer>
   );

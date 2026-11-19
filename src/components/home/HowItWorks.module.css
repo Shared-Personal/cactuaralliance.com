@@ -92,6 +92,6 @@
 
 .stepCta:hover,
 .stepCta:focus-visible {
-  background: rgba(217, 116, 143, 0.1);
+  background: rgba(145, 224, 92, 0.1);
   color: var(--c-pink-700);
 }

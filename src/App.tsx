@@ -9,6 +9,8 @@ const FindYourFCPage = lazy(() => import('./pages/FindYourFCPage'));
 const FCDirectoryPage = lazy(() => import('./pages/FCDirectoryPage'));
 const FCProfilePage = lazy(() => import('./pages/FCProfilePage'));
 const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 export default function App() {
@@ -38,6 +40,8 @@ export default function App() {
               <Route path="/fcs" element={<FCDirectoryPage />} />
               <Route path="/fcs/:lodestoneId" element={<FCProfilePage />} />
               <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>

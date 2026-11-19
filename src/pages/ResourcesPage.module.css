@@ -172,8 +172,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 80% 30%, rgba(217, 116, 143, 0.15) 0, transparent 35%),
-    radial-gradient(circle at 20% 80%, rgba(143, 185, 150, 0.2) 0, transparent 30%);
+    radial-gradient(circle at 80% 30%, rgba(145, 224, 92, 0.15) 0, transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(145, 224, 92, 0.2) 0, transparent 30%);
   pointer-events: none;
 }
 
@@ -227,7 +227,7 @@
 }
 
 .calloutBody code {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(20, 20, 20, 0.7);
   padding: 1px 6px;
   border-radius: var(--r-sm);
   font-family: ui-monospace, monospace;

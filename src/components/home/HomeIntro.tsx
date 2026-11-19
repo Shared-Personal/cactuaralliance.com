@@ -1,46 +1,67 @@
 import { Link } from 'react-router-dom';
 import { Mascot } from '../mascot/Mascot';
+import { MIMIC_BOX_URL } from '../../data/links';
+import gatheringSrc from '../../assets/alliance-gathering.jpg';
 import styles from './HomeIntro.module.css';
-
-const DISCORD_URL = 'https://discord.gg/cactuar-alliance';
 
 export function HomeIntro() {
   return (
     <section className={styles.hero}>
-      <div className={`${styles.inner} ca-container`}>
-        <div className={styles.copy}>
-          <p className={styles.eyebrow}>FFXIV · Cactuar server</p>
-          <h1 className={styles.title}>
-            Big FCs.{' '}
-            <span className={styles.titleAccent}>Small FCs.</span>
-            <br />
-            <span className={styles.titleQuiet}>One server.</span>
-          </h1>
-          <p className={styles.lede}>
-            The Cactuar Alliance is a coalition of Free Companies that share members, mentor each
-            other, and run cross-FC events. Find the FC that fits your pace, or just say hi in the
-            Discord.
-          </p>
+      <div className={styles.banner}>
+        <img
+          className={styles.bannerImg}
+          src={gatheringSrc}
+          alt="Dozens of Cactuar Alliance members from many Free Companies gathered on a staircase for a group photo"
+        />
+        <div className={styles.bannerShade} aria-hidden="true" />
 
-          <div className={styles.ctaRow}>
-            <Link to="/find-your-fc" className={styles.primary}>
-              Find your FC
-              <span aria-hidden="true">→</span>
-            </Link>
-            <a
-              href={DISCORD_URL}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.secondary}
-            >
-              Join the Discord
-              <span aria-hidden="true">↗</span>
-            </a>
+        <div className={`${styles.bannerInner} ca-container`}>
+          <div className={styles.copy}>
+            <p className={styles.eyebrow}>Final Fantasy XIV · Cactuar Server · Since 2016</p>
+            <h1 className={styles.title}>
+              <span className={styles.titleSmall}>.: The :.</span>
+              Cactuar Alliance
+            </h1>
+            <p className={styles.quote}>
+              Regardless of the <span className="ca-tag">&lt;tag&gt;</span> above your head,
+              everyone is still in the same world.
+            </p>
+          </div>
+
+          <div className={styles.mascotWrap}>
+            <Mascot size="100%" ariaLabel="" />
           </div>
         </div>
+      </div>
 
-        <div className={styles.mascotWrap} aria-hidden="true">
-          <Mascot pose="wave" size="100%" />
+      <div className={`${styles.intro} ca-container`}>
+        <a href={MIMIC_BOX_URL} target="_blank" rel="noreferrer" className={styles.boxButton}>
+          Mimic Box 2.0
+        </a>
+
+        <p className={styles.lede}>
+          The <strong>Cactuar Alliance</strong> is a collective of{' '}
+          <strong>Final Fantasy XIV&apos;s Cactuar Server Free Companies</strong> that have banded
+          together on a social &amp; positive platform to aid each other when in need in-game and to
+          share helpful information while retaining your own Free Companies image and ideals.
+        </p>
+
+        <p className={styles.body}>
+          Abbreviated as <span className="ca-tag">&lt;CA&gt;</span> to pun the FC Tag system, the
+          Cactuar Alliance serves as strong information network of players in all walks of trade to
+          help each other in whatever it is you may need!
+        </p>
+
+        <div className={styles.ctaRow}>
+          <Link to="/about" className={styles.primary}>
+            What is the &lt;CA&gt;?
+          </Link>
+          <Link to="/find-your-fc" className={styles.secondary}>
+            Find your FC
+          </Link>
+          <Link to="/contact" className={styles.secondary}>
+            Meet the Sabrotenders
+          </Link>
         </div>
       </div>
     </section>

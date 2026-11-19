@@ -1,3 +1,5 @@
+import { FC_INDEX_URL, FC_STANDINGS_URL, LINKSHELL_URL, MIMIC_BOX_URL } from './links';
+
 export interface ResourceLink {
   title: string;
   url: string;
@@ -91,9 +93,24 @@ export const RESOURCE_SECTIONS: ReadonlyArray<ResourceSection> = [
     blurb: 'Links into the Cactuar Alliance itself.',
     links: [
       {
-        title: 'Cactuar Alliance Discord',
-        url: 'https://discord.gg/cactuar-alliance',
-        description: 'Cross-FC chat and event coordination.',
+        title: 'Mimic Box 2.0',
+        url: MIMIC_BOX_URL,
+        description: 'Questions, concerns, comments, or joining — goes straight to the Sabrotenders, who send the Discord invite.',
+      },
+      {
+        title: '★ The Cactuar Server FC Index ★',
+        url: FC_INDEX_URL,
+        description: 'Spreadsheet of Cactuar Free Companies, in the words of their own Leaders and Founders.',
+      },
+      {
+        title: 'Alliance Linkshell members',
+        url: LINKSHELL_URL,
+        description: 'Current <CA> Linkshell roster on the Lodestone.',
+      },
+      {
+        title: 'Cactuar Server FC Standings',
+        url: FC_STANDINGS_URL,
+        description: 'Weekly Free Company rankings for Cactuar.',
       },
       {
         title: 'FC Directory',

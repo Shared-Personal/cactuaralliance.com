@@ -14,7 +14,7 @@
   gap: var(--sp-3);
   align-items: start;
   padding: var(--sp-4) var(--sp-5);
-  background: rgba(220, 184, 105, 0.18);
+  background: rgba(145, 224, 92, 0.08);
   border: 1.5px solid var(--c-sand-400);
   border-radius: var(--r-lg);
   color: var(--c-sage-800);

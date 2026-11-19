@@ -1,109 +1,77 @@
 .mascot {
-  display: block;
-  overflow: visible;
-  filter: drop-shadow(0 8px 16px rgba(42, 53, 48, 0.18));
+  position: relative;
+  display: inline-block;
+  line-height: 0;
 }
 
-/* ============================================================
-   Idle wobble — applies to the whole body group on hover/idle
-   ============================================================ */
-
-.body {
-  transform-origin: 110px 220px;
-  transform-box: fill-box;
+.art {
+  width: 100%;
+  height: auto;
+  user-select: none;
+  filter: drop-shadow(0 10px 24px rgba(145, 224, 92, 0.18));
 }
 
-.animated .body {
-  animation: ca-mascot-idle var(--dur-mascot) var(--ease-in-out) infinite;
+/* Idle bounce — a little Cactuar hop */
+.animated .art {
+  transform-origin: 50% 100%;
+  animation: ca-mascot-hop var(--dur-mascot) var(--ease-in-out) infinite;
 }
 
-@keyframes ca-mascot-idle {
-  0%, 100% {
-    transform: rotate(-1.5deg) translateY(0);
+@keyframes ca-mascot-hop {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
   }
   50% {
-    transform: rotate(1.5deg) translateY(-3px);
+    transform: translateY(-8px) rotate(1.5deg);
   }
 }
 
-/* ============================================================
-   Pose-specific arm motion
-   ============================================================ */
-
-.armLeft {
-  transform-origin: 39px 130px;
-  transform-box: fill-box;
+/* Sign pose — speech plate in the original site's boxed-button style */
+.sign {
+  position: absolute;
+  left: 50%;
+  bottom: -0.5em;
+  transform: translateX(-50%) rotate(-3deg);
+  padding: 0.55em 1.1em 0.4em;
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(0.8rem, 2.4vw, 1.05rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 0 0 2px var(--c-ca-green);
 }
 
-.armRight {
-  transform-origin: 181px 130px;
-  transform-box: fill-box;
-}
-
-/* Waving — left arm tilts up and oscillates */
-.pose-wave .armLeft {
-  transform: rotate(-30deg);
-}
-
-.animated.pose-wave .armLeft {
-  animation: ca-mascot-wave 1.6s var(--ease-in-out) infinite;
-}
-
-@keyframes ca-mascot-wave {
-  0%, 100% {
-    transform: rotate(-30deg);
-  }
-  50% {
-    transform: rotate(-55deg);
-  }
-}
-
-/* Sign — right arm rotates up to hold sign post */
-.pose-sign .armRight {
-  transform: rotate(-10deg);
-}
-
-/* Think — body wobble is slower, eyes are closed (handled in TSX) */
-.animated.pose-think .body {
-  animation-duration: 5s;
-}
-
-/* ============================================================
-   Thought bubble — fades in and floats
-   ============================================================ */
-
-.thoughtBubble {
+/* Think pose — floating "?" bubble */
+.thought {
+  position: absolute;
+  top: 2%;
+  right: -4%;
+  display: grid;
+  place-items: center;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  line-height: 1;
+  box-shadow: 0 0 0 2px var(--c-ca-green);
   animation: ca-thought-float 4s var(--ease-in-out) infinite;
-  transform-origin: center;
 }
 
 @keyframes ca-thought-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-4px);
-  }
-}
-
-/* ============================================================
-   Sign — wiggle slightly on hover of parent
-   ============================================================ */
-
-.sign {
-  transform-origin: 180px 60px;
-  transform-box: fill-box;
-}
-
-.animated .sign {
-  animation: ca-mascot-sign-sway 3.2s var(--ease-in-out) infinite;
-}
-
-@keyframes ca-mascot-sign-sway {
-  0%, 100% {
-    transform: rotate(-3deg);
-  }
-  50% {
-    transform: rotate(3deg);
+    transform: translateY(-5px);
   }
 }
